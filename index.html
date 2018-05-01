@@ -1,4 +1,4 @@
-//de3
+//Version v11-1-(way2)-----(CPS)----
 
 <!doctype html>	
 	<html>
@@ -10,15 +10,12 @@
 	  </head>
 	  <body>
 	    <script>
+	var getGithubData  = require('./index.js')  
 	   
- //following copied from   v11-0-(way3)-CPS_foreach-success
-	var getDataFromModule = require('./index.js')   
-         getDataFromModule(callback)
-	
 	var bel = require('bel')
 	var csjs = require('csjs-inject')
-  
-  /* --------------------------------------------------------
+	  
+	/* --------------------------------------------------------
 	FONTS
 	---------------------------------------------------------- */
 	var fonts             = ['https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css', 'https://fonts.googleapis.com/css?family=Ubuntu']
@@ -136,18 +133,16 @@
            function next (x_data) {
 		    //var element1 = bel`<div>${data.map(x => bel`<p>${x.user}</p>`)}</div>`
 		    //done(element1)
-		   x_data.forEach(putEl)
 		   
-		   function putEl(y_data){
 		   var el = bel`
 			    <div class=${css.card} onmouseenter=${hoverCard} onmouseleave=${unhoverCard}>
 			      ${cardContainer}
 			    </div>
 			  `
 		   
-			 
-			  var username          = y_data.username
-			  var name              = username
+			  var ninasProfile      = x_data[0]
+			  var username          = ninasProfile.username
+			  var name              = 'Nina'
 			  var cardText          = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostru '
 			  var imageUrl          = 'https://nomadlist.com/assets/img/cities/phuket-thailand-500px.jpg'
 			  var city              = 'Berlin'
@@ -190,27 +185,10 @@
 				    el.removeChild(cardContainer_hover)
 				    el.appendChild(cardContainer)
 				  }
-		            
+		   
 		    fx_done(el)
-			   }
             }
 		
-	    function getGithubData (fy_next) {
-		    var data1= [
-		    {
-			"repo": "nicco88/personal-portfolio",
-			"url": "https://api.github.com/repos/nicco88/personal-portfolio",
-			"username": "ninabreznik",
-			"time": "2018-04-01T17:50:29Z"
-		    },
-		    {
-			"repo": "freeCodeCamp/devdocs",
-			"url": "https://api.github.com/repos/freeCodeCamp/devdocs",
-			"username": "serapath",
-			"time": "2018-03-27T04:51:07Z"
-		    }]
-		    fy_next(data1)
-	  }
 	  
 	  
 	 
